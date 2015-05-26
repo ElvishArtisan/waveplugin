@@ -1,0 +1,10 @@
+2009-08-09 Fred Gleason <fredg@paravelsystems.com>
+	* Initial package creation.
+2009-08-09 Fred Gleason <fredg@paravelsystems.com>
+	* Removed debugging printfs from 'waveplugin.c'.
+2009-08-09 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 1.0.1.
+2009-08-09 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'PACKAGE_VERSION' to EXTRA_DIST in 'Makefile.am'.
+2009-08-09 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 1.0.2.

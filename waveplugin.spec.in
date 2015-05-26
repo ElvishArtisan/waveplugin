@@ -1,0 +1,72 @@
+## waveplugin.spec.in
+##
+##    ALSA I/O plug-in for capturing playout to WAVE file.
+##
+##    Copyright (C) 2009 Fred Gleason <fredg@paravelsystems.com>
+##
+##      $Id: waveplugin.spec.in,v 1.1.1.1 2009/08/10 00:36:00 cvs Exp $
+##
+##    This program is free software; you can redistribute it and/or modify
+##    it under the terms of version 2 of the GNU General Public License as
+##    published by the Free Software Foundation;
+##
+##    This program is distributed in the hope that it will be useful,
+##    but WITHOUT ANY WARRANTY; without even the implied warranty of
+##    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+##    GNU General Public License for more details.
+##
+##    You should have received a copy of the GNU General Public License
+##    along with this program; if not, write to the Free Software
+##    Foundation, Inc., 59 Temple Place, Suite 330, 
+##    Boston, MA  02111-1307  USA
+##
+
+Summary: ALSA I/O plug-in for capturing playout to WAVE file.
+Name: waveplugin
+Version: @VERSION@
+Release: @RPM_RELEASE@
+License: GPL
+Packager: Fred Gleason <fredg@paravelsystems.com>
+Group: Productivity/Multimedia/Other
+Source: waveplugin-@VERSION@.tar.gz
+BuildRoot: /var/tmp/waveplugin-@VERSION@
+
+%description
+Waveplugin is a PCM I/O plug-in for ALSA that can be used to redirect
+PCM playouts to a WAVE file.
+
+%prep
+
+
+%setup
+
+
+%build
+./configure --prefix=@LOCAL_PREFIX@
+make
+
+
+%install
+rm -rf $RPM_BUILD_ROOT
+
+mkdir -p $RPM_BUILD_ROOT@LOCAL_PREFIX@/@WAVE_LIB_PATH@/alsa-lib
+cp .libs/libasound_module_pcm_wave.so $RPM_BUILD_ROOT@LOCAL_PREFIX@/@WAVE_LIB_PATH@/alsa-lib/
+
+%post
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(-,root,root)
+@LOCAL_PREFIX@/@WAVE_LIB_PATH@/alsa-lib/libasound_module_pcm_wave.so
+%doc AUTHORS
+%doc ChangeLog
+%doc COPYING 
+%doc INSTALL 
+%doc NEWS 
+%doc README 
+
+%changelog
+* Sat Aug 09 2009 Fred Gleason <fredg@paravelsystems.com>
+-- Initial package creation.
